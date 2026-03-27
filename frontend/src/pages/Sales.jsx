@@ -9,7 +9,7 @@ import { Add as AddIcon, Edit as EditIcon, Receipt as ReceiptIcon, Delete as Del
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-const API_BASE = 'https://textile-project.onrender.com/api';
+const API_BASE = 'http://localhost:8000/api';
 
 const Sales = () => {
     const [sales, setSales] = useState([]);

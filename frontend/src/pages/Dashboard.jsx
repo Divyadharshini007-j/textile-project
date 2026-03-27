@@ -8,7 +8,7 @@ import {
     Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 
-const API_BASE = 'https://textile-project.onrender.com/api';
+const API_BASE = 'http://localhost:8000/api';
 
 const DashboardCard = ({ title, value, color, icon, onClick }) => (
     <Card

@@ -23,7 +23,7 @@ const Login = ({ onLogin }) => {
         console.log('Sending login request...');
 
         try {
-            const res = await axios.post('https://textile-project.onrender.com/api/auth/login', formData, {
+            const res = await axios.post('http://localhost:8000/api/auth/login', formData, {
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
             
