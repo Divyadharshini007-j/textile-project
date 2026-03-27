@@ -6,7 +6,7 @@ services:
     repo: https://github.com/Divyadharshini007-j/Textile-project.git
     rootDir: backend
     dockerContext: backend
-    dockerfilePath: ./backend/Dockerfile
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: DATABASE_URL
         sync: false
