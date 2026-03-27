@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: textile_db
+      POSTGRES_USER: textile_user
+      POSTGRES_PASSWORD: textile_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - textile_network
+
+  # Backend API
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql://textile_user:textile_password@db:5432/textile_db
+      SECRET_KEY: your-super-secret-key-change-this-in-production
+      ALGORITHM: HS256
+      ACCESS_TOKEN_EXPIRE_MINUTES: 30
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    networks:
+      - textile_network
+    volumes:
+      - ./backend:/app
+    restart: unless-stopped
+
+  # Frontend
+  frontend:
+    build: ./frontend
+    environment:
+      VITE_API_BASE_URL: http://localhost:8000/api
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - textile_network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  textile_network:
+    driver: bridge
