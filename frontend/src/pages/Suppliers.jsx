@@ -10,7 +10,7 @@ import axios from 'axios';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-const API_BASE = 'http://127.0.0.1:8000/api';
+const API_BASE = 'https://textile-project.onrender.com/api';
 
 const Suppliers = () => {
     const [suppliers, setSuppliers] = useState([]);

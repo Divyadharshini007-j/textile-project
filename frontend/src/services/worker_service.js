@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8000/api';
+const API_BASE_URL = 'https://textile-project.onrender.com/api';
 
 // ── Main app API (uses 'token') ──────────────────────────────────────────────
 const mainApi = axios.create({ baseURL: API_BASE_URL });
