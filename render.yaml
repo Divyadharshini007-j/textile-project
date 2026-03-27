@@ -1,0 +1,24 @@
+services:
+  # Backend API Service
+  - type: web
+    name: textile-backend
+    env: python
+    repo: https://github.com/Divyadharshini007-j/Textile-project.git
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: SECRET_KEY
+        sync: false
+      - key: ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: 30
+
+  # PostgreSQL Database
+  - type: pserv
+    name: textile-db
+    env: postgres
+    plan: free
